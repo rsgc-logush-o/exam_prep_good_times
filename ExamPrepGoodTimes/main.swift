@@ -19,10 +19,26 @@ import Foundation
  Make use of your test plan and algorithm to ensure your code is complete.
  
  */
-var inputToProcess : String = ""
+var inputToProcess : Int? = nil
+
+struct City
+{
+    var name : String
+    var timeOffset : Int
+}
+
+var cities = [City]()
+
+cities.append(City(name: "Ottawa", timeOffset: 0))
+cities.append(City(name: "Victoria", timeOffset: -300))
+cities.append(City(name: "Edmonton", timeOffset: -200))
+cities.append(City(name: "Winnipeg", timeOffset: -100))
+cities.append(City(name: "Toronto", timeOffset: 0))
+cities.append(City(name: "Halifax", timeOffset: 100))
+cities.append(City(name: "St. John's", timeOffset: 130))
 
 // Loop until valid input is received
-while inputToProcess == "" {
+while inputToProcess == nil {
     
     // Show the prompt
     print("Ask the question here? ", terminator: "")
@@ -32,7 +48,7 @@ while inputToProcess == "" {
     input = readLine()
     
     // Use optional binding to see if the string can be unwrapped (to see if it is not nil)
-    if let notNilInput = input {
+    if let notNilInput = Int(input!) {
         
         // You probably need to add additional checks to be sure the
         // input received is valid
