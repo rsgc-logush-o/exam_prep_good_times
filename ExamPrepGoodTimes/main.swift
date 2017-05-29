@@ -52,18 +52,22 @@ while inputToProcess == nil {
     // Use optional binding to see if the string can be unwrapped (to see if it is not nil)
     if let notNilInput = Int(input!) {
         
-        
+        if notNilInput < 2400 && notNilInput > -1 && notNilInput % 100 < 60
+        {
+           inputToProcess = notNilInput
+        }else{
+            print("Please enter a valid input between 0 and 2059")
+        }
         // You probably need to add additional checks to be sure the
         // input received is valid
         // Add checks as needed...
         
         // Save the input given, as we are certain it's what we are looking for now
-        inputToProcess = notNilInput
-        
     }else{
-    
-    print("Please provide an integer value between 0 and 2359.")
+        print("Please enter a valid input between 0 and 2059")
     }
+    
+    
     
 }
 
