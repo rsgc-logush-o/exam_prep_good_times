@@ -25,8 +25,10 @@ struct City
 {
     var name : String
     var timeOffset : Int
+    
 }
 
+var times = [Int]()
 var cities = [City]()
 
 cities.append(City(name: "Ottawa", timeOffset: 0))
@@ -41,7 +43,7 @@ cities.append(City(name: "St. John's", timeOffset: 130))
 while inputToProcess == nil {
     
     // Show the prompt
-    print("Ask the question here? ", terminator: "")
+    
     
     // Get the user's input
     var input : String?
@@ -50,6 +52,7 @@ while inputToProcess == nil {
     // Use optional binding to see if the string can be unwrapped (to see if it is not nil)
     if let notNilInput = Int(input!) {
         
+        
         // You probably need to add additional checks to be sure the
         // input received is valid
         // Add checks as needed...
@@ -57,9 +60,37 @@ while inputToProcess == nil {
         // Save the input given, as we are certain it's what we are looking for now
         inputToProcess = notNilInput
         
+    }else{
+    
+    print("Please provide an integer value between 0 and 2359.")
     }
     
 }
+
+for i in cities
+{
+    var bufferTime = inputToProcess
+    var bufferMinutes : Int
+    
+    bufferTime = bufferTime! + i.timeOffset
+    bufferMinutes = bufferTime! % 100
+    bufferTime = bufferTime! + (bufferMinutes / 60) * 100
+    bufferTime = bufferTime! - bufferMinutes
+    bufferMinutes = bufferMinutes % 60
+    bufferTime = bufferTime! + bufferMinutes
+    bufferTime = bufferTime! + 2400
+    bufferTime = bufferTime! % 2400
+
+    
+    
+    times.append(bufferTime!)
+}
+
+for i in 0...6
+{
+    print("\(times[i]) in \(cities[i].name)")
+}
+
 
 /*
  
